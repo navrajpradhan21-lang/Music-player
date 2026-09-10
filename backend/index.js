@@ -12,7 +12,9 @@ dotenv.config()
 const app = express()
 
 // Middleware
-app.use(cors())
+app.use(cors({
+    origin:"https://music-player-acme-e3eb.vercel.app/"
+}));
 app.use(express.json());
 
 // db 
