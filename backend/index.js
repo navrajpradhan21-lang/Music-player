@@ -13,7 +13,7 @@ const app = express()
 
 // Middleware
 app.use(cors({
-    origin:"https://music-player-acme-e3eb.vercel.app/"
+    origin:"https://music-player-mocha-nine.vercel.app"
 }));
 app.use(express.json());
 
