@@ -1,7 +1,7 @@
 import express from 'express'
 import upload from '../middleware/multer.js';
 
-import { getSong,uploadSong } from '../controllers/song.controller.js';
+import { getSongByPlaylist,uploadSong } from '../controllers/song.controller.js';
 
 
 
@@ -24,6 +24,12 @@ songRoutes.post('/upload',upload.fields([
 
 // get all song
 
-songRoutes.get('/',getSong);
+songRoutes.get('/playlist/:slug',getSongByPlaylist);
 
-export default songRoutes
+export default songRoutes;
+
+/*
+POST /api/songs/upload
+
+GET /api/songs/playlist/:slug
+*/

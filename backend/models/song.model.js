@@ -25,6 +25,11 @@ const songSchema = new mongoose.Schema(
            order: {
             type: Number,
             required: true
+        },
+        playlist:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Playlist",
+            required: true
         }
     },
     {
