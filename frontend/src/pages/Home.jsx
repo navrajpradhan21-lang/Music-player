@@ -12,15 +12,22 @@ import PlaylistCard from '../components/PlaylistCard'
 
 const Home = () => {
   const [playlists, setPlaylists] = useState([])
+  const [loading, setLoading] = useState(true)
+
   // As soon as the website renders fetch data
   useEffect(() => {
     const fetchPlaylists = async () => {
       try {
+        setLoading(true);
+
         const data = await getPlaylists();
+
         setPlaylists(data.playlists)
 
       } catch (error) {
-        console.log(error)
+        console.log("error fetching playlists",error)
+      }finally{
+        setLoading(false)
       }
     };
     fetchPlaylists();
@@ -142,10 +149,15 @@ const Home = () => {
             />
           </div>
           {/* Playlist card */}
-          <div className='flex justify-center'>
-            <div className='flex items-center justify-start mt-10  gap-10 w-[90%] md:w-[50%]
-          overflow-auto pb-4 snap-start px-3 scrollbar-none
-           snap-x snap-mandatory'
+          { loading?(
+            <div className="flex items-center justify-center py-20">
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/30 border-t-white"></div>
+             </div>
+          ):(
+            <div className='flex justify-center'>
+              <div className='flex items-center justify-start mt-10  gap-10 w-[90%] md:w-[50%]
+                overflow-auto pb-4 snap-start px-3 scrollbar-none
+                 snap-x snap-mandatory'
               ref={playlistContainerRef}>
               {playlists.map((playlist) => (
                 <PlaylistCard
@@ -155,8 +167,10 @@ const Home = () => {
                 />
               ))}
 
+              </div>
+         
             </div>
-          </div>
+          )}
 
         </div>
       </section>
