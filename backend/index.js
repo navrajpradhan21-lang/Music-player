@@ -15,12 +15,24 @@ const app = express()
 
 // MIDDLEWARE
 
-// (Front end)
+// Allow local development plus the deployed frontend. Add additional origins in
+// the hosting dashboard with CLIENT_ORIGINS as a comma-separated list.
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://music-player-mocha-nine.vercel.app",
+    ...((process.env.CLIENT_ORIGINS || "").split(",").map((origin) => origin.trim()).filter(Boolean))
+];
+
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "https://music-player-mocha-nine.vercel.app"
-    ]
+    origin(origin, callback) {
+        // Requests without an Origin header (for example health checks) are safe.
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+
+        return callback(new Error("CORS origin is not allowed"));
+    }
 }));
 
 // to read json

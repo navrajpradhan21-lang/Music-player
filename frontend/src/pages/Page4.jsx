@@ -15,14 +15,14 @@ import { useParams } from "react-router-dom";
 
 
 const Page4 = () => {
-  const { slug } = useParams();
+  const  slug  = useParams();
   const [songs, setSongs] = useState([])
   const [currentSong, setCurrentSong] = useState(null)
 
   useEffect(()=>{
     const fetchSongs = async()=>{
       try{
-        const data = await getSongsByPlaylist(slug)
+        const data = await getSongsByPlaylist('zubeendaa❤️')
           setSongs(data.songs)
 
           // first Song
