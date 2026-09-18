@@ -23,7 +23,7 @@ const Page4 = () => {
   useEffect(()=>{
     const fetchSongs = async()=>{
       try{
-        const {data} = await getSongsByPlaylist(slug)
+        const {data} = await getSongsByPlaylist('zubeendaa❤️')
           setSongs(data.songs)
 
           // first Song
