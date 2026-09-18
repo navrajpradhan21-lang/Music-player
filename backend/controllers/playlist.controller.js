@@ -120,7 +120,7 @@ export const getallPlaylist = async (req, res) => {
         }
         // Mongo Db is the fallback 
         // Get Data from MongoDb
-        const playlists = await Playlist.find().sort({ createdAt: 1 })
+        const playlists = await Playlist.find().sort({ createdAt: -1 })
 
         // Agre koi playlist nahi hai toh empty list return karega
         // Try saving in redis
