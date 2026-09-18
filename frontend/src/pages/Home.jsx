@@ -37,9 +37,13 @@ const Home = () => {
   // Auto Scroll effect
   useEffect(() => {
     const container = playlistContainerRef.current
-    if (!container) return
+    if (!container || playlists.length < 2) return
+
     const interval = setInterval(() => {
       const maxScroll = container.scrollWidth - container.clientWidth
+
+      // There is no horizontal overflow to scroll through.
+      if (maxScroll <= 0) return
 
       if (container.scrollLeft >= maxScroll - 10) {
         container.scrollTo({
@@ -56,7 +60,7 @@ const Home = () => {
 
     return () => clearInterval(interval)
 
-  }, [])
+  }, [playlists.length])
 
 
   const navigate = useNavigate()

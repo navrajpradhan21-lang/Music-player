@@ -11,7 +11,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path='/playlist/baddie' element={<Baddie/>}/>
-    
+      <Route path='songs/playlist/love'element={<Page2/>}/>
       <Route path='songs/playlist/heart-break'element={<Page3/>}/>
       <Route path = 'songs/playlist/zubeendaa❤️' element={<Page4/>}/>
     </Routes>

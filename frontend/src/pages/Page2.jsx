@@ -19,7 +19,7 @@ const Page2 = () => {
   useEffect(()=>{
     const fetchSongs = async()=>{
       try{
-        const {data} = await api.get("/songs")
+        const data = await api.get('love')
           setSongs(data.songs)
 
           // first Song
