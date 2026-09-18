@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 
-import SongList from '../components/SongList'
 import MusicPlayer from '../components/MusicPlayer'
-import api from '../utils/axios'
+import { getSongsByPlaylist } from '../utils/axios'
 import bg from '../assets/lovebg.jpeg'
 import bg2 from '../assets/lovebgM.jpeg'
 
@@ -19,11 +18,11 @@ const Page2 = () => {
   useEffect(()=>{
     const fetchSongs = async()=>{
       try{
-        const data = await api.get('love')
+        const data = await getSongsByPlaylist('love')
           setSongs(data.songs)
 
           // first Song
-          if(data.songs.lenght>0){
+          if(data.songs.length > 0){
             setCurrentSong(data.songs[0]);
           }
 
