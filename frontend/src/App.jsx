@@ -13,7 +13,7 @@ const App = () => {
       <Route path='/playlist/baddie' element={<Baddie/>}/>
     
       <Route path='songs/playlist/heart-break'element={<Page3/>}/>
-      <Route path = '/playlist/axomiaya' element={<Page4/>}/>
+      <Route path = 'songs/playlist/zubeendaa❤️' element={<Page4/>}/>
     </Routes>
   )
 }
